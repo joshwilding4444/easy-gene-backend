@@ -21,7 +21,7 @@ public class TranslatorTranscriber {
 	 * @param input RNA or DNA sequence data to translate into a series of amino acids.
 	 * @param type Identifier for the sequence type. Either DNA or RNA.
 	 * */
-	public static String translateSequence(String input, String type) {
+	public static String translateSequenceToAA(String input, String type) {
 		StringBuilder outputSequenceData = new StringBuilder();
 		for(int i = 0; i < input.length(); i += 3) {
 			String codon = input.substring(i, i + 3);
@@ -71,15 +71,5 @@ public class TranslatorTranscriber {
 			}
 		}
 		return outputSequenceData.toString();
-	}
-	/**
-	 * Translates a DNA sequence directly to an amino acid sequence. The output of this method is
-	 * identical to first calling translateDNASequenceToRNA() on input, then calling 
-	 * translateRNASequence() on the result.
-	 * 
-	 * @param input The base DNA sequence for the new amino acid sequence.
-	 * */
-	public static String translateDNAtoAA(String input) {
-		 return translateSequence(input, "DNA");
 	}
 }

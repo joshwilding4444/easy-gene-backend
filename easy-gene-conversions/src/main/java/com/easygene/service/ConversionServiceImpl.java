@@ -16,20 +16,18 @@ public class ConversionServiceImpl implements ConversionService {
 	private ConversionRepository conversionRepo;
 	
 	@Override
-	public String convert(String input, String username, String flag) {
+	public String convert(String input, String username, String type, String flag) {
 		String result = "";
-		if(flag == "TRANSCRIBE") {
+		if(flag.equals("TRANSCRIBE")) {
 			result = ConversionService.transcribe(input);
-		} else {
-			result = ConversionService.translate(input);
+		} else if(flag.equals("TRANSLATE")) {
+			result = ConversionService.translate(input, type);
 		}
 		return result;
 	}
 
 	@Override
 	public ConversionDTO saveResult(ConversionDTO input) {
-		String resultString = convert(input.getOriginalSequence(), input.getUsername(), input.getConversionType());
-		input.setResultSequence(resultString);
 		Conversion writtenResult = conversionRepo.save(input.getEntity());
 		return ConversionDTO.prepareDTO(writtenResult);
 	}

@@ -23,6 +23,9 @@ public class ConversionController {
 	@CrossOrigin
 	@PostMapping(path = "/convert")
 	public ResponseEntity<ConversionDTO> convertSequence(@RequestBody ConversionDTO input) {
+		String resultString = conversionService.convert(input.getOriginalSequence(), input.getUsername(), 
+				input.getOriginalSequenceType(), input.getConversionType());
+		input.setResultSequence(resultString);
 		ConversionDTO res = conversionService.saveResult(input);
 		return new ResponseEntity<ConversionDTO>(res, HttpStatus.OK);
 	}

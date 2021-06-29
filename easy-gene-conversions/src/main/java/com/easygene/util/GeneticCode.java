@@ -189,7 +189,7 @@ public class GeneticCode {
 	 * 			   translation.
 	 * */
 	public String getSingleCodonTranslation(String codon, String type) {
-		if(type == "RNA") {
+		if(type.equals("RNA")) {
 			return rnaTranslationTable.get(codon);
 		} 
 		else {

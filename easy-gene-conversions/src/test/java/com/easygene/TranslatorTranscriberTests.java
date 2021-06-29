@@ -20,7 +20,7 @@ public class TranslatorTranscriberTests {
 	public void TranslatesRNAToAA() {
 		String testRNASequence = "AUGUGGCCCUCAUAA";
 		String expectedAAOutput = "MWPS*";
-		String actualOutput = TranslatorTranscriber.translateSequence(testRNASequence, "RNA");
+		String actualOutput = TranslatorTranscriber.translateSequenceToAA(testRNASequence, "RNA");
 		Assertions.assertEquals(expectedAAOutput, actualOutput);
 	}
 	
@@ -28,7 +28,7 @@ public class TranslatorTranscriberTests {
 	public void TranslatesDNAToAA() {
 		String testDNASequence = "TACACCGGGAGTATT";
 		String expectedAAOutput = "MWPS*";
-		String actualOutput = TranslatorTranscriber.translateSequence(testDNASequence, "DNA");
+		String actualOutput = TranslatorTranscriber.translateSequenceToAA(testDNASequence, "DNA");
 		Assertions.assertEquals(expectedAAOutput, actualOutput);
 	}
 }
