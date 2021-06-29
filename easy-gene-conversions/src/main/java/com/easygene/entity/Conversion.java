@@ -2,6 +2,8 @@ package com.easygene.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 public class Conversion {
 	@Id
 	@Column(name = "conversionid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int conversionid;
 	
 	@Column(name = "username")
@@ -20,6 +23,9 @@ public class Conversion {
 	
 	@Column(name = "original_sequence")
 	private String originalSequence;
+	
+	@Column(name = "original_sequence_type")
+	private String originalSequenceType;
 	
 	@Column(name = "result_sequence")
 	private String resultSequence;
@@ -56,6 +62,14 @@ public class Conversion {
 		this.originalSequence = originalSequence;
 	}
 
+	public String getOriginalSequenceType() {
+		return originalSequenceType;
+	}
+
+	public void setOriginalSequenceType(String originalSequenceType) {
+		this.originalSequenceType = originalSequenceType;
+	}
+
 	public String getResultSequence() {
 		return resultSequence;
 	}
@@ -65,12 +79,13 @@ public class Conversion {
 	}
 
 	public Conversion(int conversionid, String username, String conversionType, String originalSequence,
-			String resultSequence) {
+			String originalSequenceType, String resultSequence) {
 		super();
 		this.conversionid = conversionid;
 		this.username = username;
 		this.conversionType = conversionType;
 		this.originalSequence = originalSequence;
+		this.originalSequenceType = originalSequenceType;
 		this.resultSequence = resultSequence;
 	}
 
@@ -80,6 +95,7 @@ public class Conversion {
 		this.username = "";
 		this.conversionType = "TRANSCRIPTION";
 		this.originalSequence = "";
+		this.originalSequenceType = "DNA";
 		this.resultSequence = "";
 	}
 }

@@ -7,6 +7,7 @@ public class ConversionDTO {
 	private String username;
 	private String conversionType;
 	private String originalSequence;
+	private String originalSequenceType;
 	private String resultSequence;
 	
 	public int getConversionid() {
@@ -33,6 +34,12 @@ public class ConversionDTO {
 	public void setOriginalSequence(String originalSequence) {
 		this.originalSequence = originalSequence;
 	}
+	public String getOriginalSequenceType() {
+		return originalSequenceType;
+	}
+	public void setOriginalSequenceType(String originalSequenceType) {
+		this.originalSequenceType = originalSequenceType;
+	}
 	public String getResultSequence() {
 		return resultSequence;
 	}
@@ -40,12 +47,13 @@ public class ConversionDTO {
 		this.resultSequence = resultSequence;
 	}
 	public ConversionDTO(int conversionid, String username, String conversionType, String originalSequence,
-			String resultSequence) {
+			String originalSequenceType, String resultSequence) {
 		super();
 		this.conversionid = conversionid;
 		this.username = username;
 		this.conversionType = conversionType;
 		this.originalSequence = originalSequence;
+		this.originalSequenceType = originalSequenceType;
 		this.resultSequence = resultSequence;
 	}
 	public ConversionDTO() {
@@ -58,12 +66,12 @@ public class ConversionDTO {
 	}
 	
 	public Conversion getEntity() {
-		return new Conversion(this.conversionid, this.username, this.conversionType, this.originalSequence, this.resultSequence);
+		return new Conversion(this.conversionid, this.username, this.conversionType, 
+				this.originalSequence, this.originalSequenceType, this.resultSequence);
 	}
 	
 	public static ConversionDTO prepareDTO(Conversion input) {
 		return new ConversionDTO(input.getConversionid(), input.getUsername(), input.getConversionType(), 
-				input.getOriginalSequence(), input.getResultSequence());
+				input.getOriginalSequence(), input.getOriginalSequenceType(), input.getResultSequence());
 	}
-	
 }
